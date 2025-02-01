@@ -15,6 +15,15 @@ interface ArtService {
         @Query("fields") fields: String = "id,title,image_id"
     ): ArtsResponse
 
+    @GET("artworks/search")
+    suspend fun getPaintings(
+        @Query("classification_titles") classification: String,
+        @Query("q") searchQuery: String?,
+        @Query("page") page: Int,
+        @Query("limit") limit: Int = 20,
+        @Query("fields") fields: String = "id,title,image_id,artist_display,date_display"
+    ): ArtsResponse
+
     @GET("artworks/{id}")
     suspend fun getArtworkDetails(@Path("id") id: Int): ArtResponse
 }

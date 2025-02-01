@@ -15,9 +15,9 @@ import javax.inject.Inject
 class ArtRepositoryImpl @Inject constructor(
     private val api: ArtService
 ) : ArtRepository {
-    override fun getArtworks(): Flow<PagingData<Artwork>> = Pager(
+    override fun getArtworks(classification: String, searchQuery: String?): Flow<PagingData<Artwork>> = Pager(
         config = PagingConfig(pageSize = 20),
-        pagingSourceFactory = { ArtPagingSource(api) }
+        pagingSourceFactory = { ArtPagingSource(api,classification,searchQuery) }
     ).flow.map { pagingData ->
         pagingData.map { ArtMapper.mapToDomain(it) }
     }

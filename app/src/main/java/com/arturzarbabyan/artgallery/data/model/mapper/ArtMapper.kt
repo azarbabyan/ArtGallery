@@ -8,7 +8,14 @@ object ArtMapper {
         return Artwork(
             id = response.id,
             title = response.title,
-            imageUrl = "https://www.artic.edu/iiif/2/${response.image_id}/full/300,/0/default.jpg"
+            artist = response.artist ?: "Unknown Artist",
+            year = response.year ?: "Unknown Year",
+            medium = response.medium ?: "Unknown Medium",
+            type = response.type ?: "Unknown Type",
+            dimensions = response.dimensions ?: "Unknown Dimensions",
+            department = response.department ?: "Unknown Category",
+            imageUrl = response.imageUrl,
+            imageUrlBig = response.imageUrl,
         )
     }
 }

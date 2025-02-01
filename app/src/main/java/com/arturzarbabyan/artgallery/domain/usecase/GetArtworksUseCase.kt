@@ -9,5 +9,5 @@ import javax.inject.Inject
 class GetArtworksUseCase @Inject constructor(
     private val repository: ArtRepository
 ) {
-    operator fun invoke(): Flow<PagingData<Artwork>> = repository.getArtworks()
+    operator fun invoke(classification: String,searchQuery: String?): Flow<PagingData<Artwork>> = repository.getArtworks(classification,searchQuery)
 }
