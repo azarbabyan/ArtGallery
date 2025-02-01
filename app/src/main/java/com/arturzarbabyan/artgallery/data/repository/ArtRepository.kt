@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ArtRepository {
     fun getArtworks(): Flow<PagingData<Artwork>>
+    suspend fun getArtworkById(id: Int): Artwork
 }

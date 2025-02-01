@@ -4,4 +4,4 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class ArtResponse(val data: List<ArtworkResponse>)
+data class ArtResponse(val data: ArtworkResponse)

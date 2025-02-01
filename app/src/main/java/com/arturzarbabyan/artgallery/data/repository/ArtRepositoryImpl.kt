@@ -21,4 +21,9 @@ class ArtRepositoryImpl @Inject constructor(
     ).flow.map { pagingData ->
         pagingData.map { ArtMapper.mapToDomain(it) }
     }
+
+    override suspend fun getArtworkById(id: Int): Artwork {
+        val response = api.getArtworkDetails(id)
+        return ArtMapper.mapToDomain(response.data)
+    }
 }

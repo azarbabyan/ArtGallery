@@ -1,7 +1,10 @@
 package com.arturzarbabyan.artgallery.data.api
 
 import com.arturzarbabyan.artgallery.data.model.response.ArtResponse
+import com.arturzarbabyan.artgallery.data.model.response.ArtsResponse
+import com.arturzarbabyan.artgallery.data.model.response.ArtworkResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ArtService {
@@ -10,5 +13,8 @@ interface ArtService {
         @Query("page") page: Int,
         @Query("limit") limit: Int = 20,
         @Query("fields") fields: String = "id,title,image_id"
-    ): ArtResponse
+    ): ArtsResponse
+
+    @GET("artworks/{id}")
+    suspend fun getArtworkDetails(@Path("id") id: Int): ArtResponse
 }
